@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.gls.winter.page.Pagination;
+import com.gls.winter.page.Search;
 
 @Repository
 public class BoardDAO {
@@ -33,8 +34,8 @@ public class BoardDAO {
 		return sqlSession.selectOne("Board.getBoard", seq);
 	}
 
-	public List<BoardVO> getBoardList(Pagination pagination) {
-		return sqlSession.selectList("Board.getBoardList", pagination);
+	public List<BoardVO> getBoardList(Search search) {
+		return sqlSession.selectList("Board.getBoardList", search);
 	}
 	
 	public List<BoardVO> getBoardListFound(Pagination pagination) {
@@ -46,8 +47,8 @@ public class BoardDAO {
 	}
 
 	// 전체 글의 개수 리턴
-	public int getBoardListCnt() { // throws Exception {
-		return sqlSession.selectOne("Board.getBoardListCnt");
+	public int getBoardListCnt(Search search) { // throws Exception {
+		return sqlSession.selectOne("Board.getBoardListCnt", search);
 	}
 
 	// 전체 글의 개수 리턴

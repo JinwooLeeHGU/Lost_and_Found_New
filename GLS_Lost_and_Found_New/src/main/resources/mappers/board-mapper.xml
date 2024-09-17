@@ -29,6 +29,24 @@
 			* 
 		FROM 
 			LF_Product_Test 
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="searchType=='all' and keyword!=null and keyword!=''">
+				AND TITLE like CONCAT('%', #{keyword}, '%')
+				OR
+				CONTENT like CONCAT('%', #{keyword}, '%')
+				OR
+				WRITER like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='title' and keyword!=null and keyword!=''">
+				AND TITLE like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='content' and keyword != null and keyword != '' ">
+				AND CONTENT like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='writer' and keyword != null and keyword != '' ">
+				AND WRITER like CONCAT('%', #{keyword}, '%')
+			</if>
+		</trim>
  		LIMIT
 			#{startList}, #{listSize}
 			
@@ -68,7 +86,24 @@
 			COUNT(*) as listCnt <!-- 글(row)을 얻어올 때는 count() 라는 함수를 사용 -->
 		FROM
 			LF_Product_Test
-			
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="searchType=='all' and keyword!=null and keyword!=''">
+				AND TITLE like CONCAT('%', #{keyword}, '%')
+				OR
+				CONTENT like CONCAT('%', #{keyword}, '%')
+				OR
+				WRITER like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='title' and keyword!=null and keyword!=''">
+				AND TITLE like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='content' and keyword != null and keyword != '' ">
+				AND CONTENT like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='writer' and keyword != null and keyword != '' ">
+				AND WRITER like CONCAT('%', #{keyword}, '%')
+			</if>
+		</trim>
 			<!-- 전체 글의 개수를 읽어와 전체 페이지의 수를 개산해야한다. 따라서 전체 글의 개수를 읽어 오는 SQL문을 추가 다 -->
 
 	</select>

@@ -13,7 +13,12 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		HttpSession session = request.getSession();
+		
+		System.out.println(session.getAttribute("login"));
+		System.out.println(request.getContextPath());
+		
 		Object obj = session.getAttribute("login");
+		
 		if(obj==null) {
 			response.sendRedirect(request.getContextPath() + "/login/login");
 			return false;

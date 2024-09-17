@@ -15,6 +15,7 @@ public class Pagination {
 	private int startPage;   // 범위 내 시작 페이지
 	private int startList;   // 게시판 시작 번호
 	private int endPage;     // 범위 내 끝 페이지 
+	private int lost;        // 1 - found / 0 - lost
 	private boolean prev;    // 이전 페이지
 	private boolean next;    // 다음 페이지
 
@@ -90,10 +91,11 @@ public class Pagination {
 		return startList;
 	}
 
-	public void pageInfo(int page, int range, int listCnt) {
+	public void pageInfo(int page, int range, int listCnt, int lost) {
 		this.page = page;         // 현재 페이지의 정보 
 		this.range = range;       // 현재 페이지 범위 정보
 		this.listCnt = listCnt;   // 게시물의 총 개수
+		this.lost = lost;
 		
 		//전체 페이지수 
 		// this.pageCnt = (int) Math.ceil(listCnt/listSize);

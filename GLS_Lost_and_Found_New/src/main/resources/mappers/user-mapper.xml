@@ -3,7 +3,9 @@
 <mapper namespace="User">
 	<select id="getUser" resultType="user">
 		select userid, username from LF_User_Test
-		where userid=#{userid} and password=#{password}
+		where userid=#{userid} 
+		<!--  2020.03.18 진우 구글 로그인시에 패스워드가 없어서 같은 유저인지 인식을 못해서 계속 가입이 되어서 주석  -->
+		<!-- and password=#{password} -->
 	</select>
 	<insert id="insertUser">
 		insert into LF_User_Test (userid, password)

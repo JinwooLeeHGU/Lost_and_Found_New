@@ -34,10 +34,10 @@
 
 	<interceptors>
 		<interceptor>
-			<mapping path="/**" />
-			<exclude-mapping path="/resources/**" />
-			<exclude-mapping path="/img/**" />
-			<exclude-mapping path="/login/*" />
+			<mapping path="/**/" />
+			<!-- <exclude-mapping path="/resources/**" />
+			<exclude-mapping path="/img/**" /> -->
+			<exclude-mapping path="/login/**" />
 			<beans:ref bean="LoginCheckInterceptor" />
 		</interceptor>
 	</interceptors>

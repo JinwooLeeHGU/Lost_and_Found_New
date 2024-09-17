@@ -8,11 +8,6 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver" />
-		<!-- <property name="url" value="jdbc:mysql://db4free.net:3306/yohansdb" 
-			/> <property name="username" value="syh3000" /> <property name="password" 
-			value="12345abcd" /> -->
-
-
 		<property name="url"
 			value="jdbc:mysql://203.252.112.29:3306/gls_db?serverTimezone=UTC" />
 		<property name="username" value="gls_db" />
